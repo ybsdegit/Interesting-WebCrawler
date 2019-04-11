@@ -10,7 +10,7 @@ import time
 
 import requests
 
-from 链家.info import rent_type, city_info
+from .info import rent_type, city_info
 from requests.exceptions import ConnectionError
 # from pymongo import MongoClient
 import pymongo

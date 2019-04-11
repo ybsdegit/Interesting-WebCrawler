@@ -1,0 +1,170 @@
+2019-03-31 18:34:58,259 - C:/Users/ybsde/PycharmProjects/Interesting-WebCrawler/Wandering_Earth/comment_crawler_1.py[line:93] - INFO: start get comment
+2019-03-31 18:35:11,801 - C:/Users/ybsde/PycharmProjects/Interesting-WebCrawler/Wandering_Earth/comment_crawler_1.py[line:93] - INFO: start get comment
+2019-03-31 18:35:21,933 - C:\Users\ybsde\AppData\Roaming\Python\Python37\site-packages\fake_useragent\utils.py[line:184] - WARNING: Error occurred during loading data. Trying to use cache server https://fake-useragent.herokuapp.com/browsers/0.1.11
+Traceback (most recent call last):
+  File "C:\Program Files (x86)\python\python3.7.2\lib\urllib\request.py", line 1317, in do_open
+    encode_chunked=req.has_header('Transfer-encoding'))
+  File "C:\Program Files (x86)\python\python3.7.2\lib\http\client.py", line 1229, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "C:\Program Files (x86)\python\python3.7.2\lib\http\client.py", line 1275, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "C:\Program Files (x86)\python\python3.7.2\lib\http\client.py", line 1224, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "C:\Program Files (x86)\python\python3.7.2\lib\http\client.py", line 1016, in _send_output
+    self.send(msg)
+  File "C:\Program Files (x86)\python\python3.7.2\lib\http\client.py", line 956, in send
+    self.connect()
+  File "C:\Program Files (x86)\python\python3.7.2\lib\http\client.py", line 1384, in connect
+    super().connect()
+  File "C:\Program Files (x86)\python\python3.7.2\lib\http\client.py", line 928, in connect
+    (self.host,self.port), self.timeout, self.source_address)
+  File "C:\Program Files (x86)\python\python3.7.2\lib\socket.py", line 727, in create_connection
+    raise err
+  File "C:\Program Files (x86)\python\python3.7.2\lib\socket.py", line 716, in create_connection
+    sock.connect(sa)
+socket.timeout: timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ybsde\AppData\Roaming\Python\Python37\site-packages\fake_useragent\utils.py", line 67, in get
+    context=context,
+  File "C:\Program Files (x86)\python\python3.7.2\lib\urllib\request.py", line 222, in urlopen
+    return opener.open(url, data, timeout)
+  File "C:\Program Files (x86)\python\python3.7.2\lib\urllib\request.py", line 525, in open
+    response = self._open(req, data)
+  File "C:\Program Files (x86)\python\python3.7.2\lib\urllib\request.py", line 543, in _open
+    '_open', req)
+  File "C:\Program Files (x86)\python\python3.7.2\lib\urllib\request.py", line 503, in _call_chain
+    result = func(*args)
+  File "C:\Program Files (x86)\python\python3.7.2\lib\urllib\request.py", line 1360, in https_open
+    context=self._context, check_hostname=self._check_hostname)
+  File "C:\Program Files (x86)\python\python3.7.2\lib\urllib\request.py", line 1319, in do_open
+    raise URLError(err)
+urllib.error.URLError: <urlopen error timed out>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ybsde\AppData\Roaming\Python\Python37\site-packages\fake_useragent\utils.py", line 154, in load
+    for item in get_browsers(verify_ssl=verify_ssl):
+  File "C:\Users\ybsde\AppData\Roaming\Python\Python37\site-packages\fake_useragent\utils.py", line 97, in get_browsers
+    html = get(settings.BROWSERS_STATS_PAGE, verify_ssl=verify_ssl)
+  File "C:\Users\ybsde\AppData\Roaming\Python\Python37\site-packages\fake_useragent\utils.py", line 84, in get
+    raise FakeUserAgentError('Maximum amount of retries reached')
+fake_useragent.errors.FakeUserAgentError: Maximum amount of retries reached
+2019-03-31 18:36:10,041 - C:/Users/ybsde/PycharmProjects/Interesting-WebCrawler/Wandering_Earth/comment_crawler_1.py[line:105] - ERROR: 异常
+Traceback (most recent call last):
+  File "C:/Users/ybsde/PycharmProjects/Interesting-WebCrawler/Wandering_Earth/comment_crawler_1.py", line 100, in <module>
+    url = my.parse_comments(data)
+  File "C:/Users/ybsde/PycharmProjects/Interesting-WebCrawler/Wandering_Earth/comment_crawler_1.py", line 63, in parse_comments
+    comments = data['data']['comments']
+KeyError: 'comments'
+2019-03-31 18:36:32,755 - C:/Users/ybsde/PycharmProjects/Interesting-WebCrawler/Wandering_Earth/comment_crawler_1.py[line:93] - INFO: start get comment
+2019-03-31 18:37:03,038 - C:/Users/ybsde/PycharmProjects/Interesting-WebCrawler/Wandering_Earth/comment_crawler_1.py[line:93] - INFO: start get comment
+2019-03-31 18:38:06,670 - C:/Users/ybsde/PycharmProjects/Interesting-WebCrawler/Wandering_Earth/comment_crawler_1.py[line:106] - ERROR: 异常
+Traceback (most recent call last):
+  File "C:/Users/ybsde/PycharmProjects/Interesting-WebCrawler/Wandering_Earth/comment_crawler_1.py", line 101, in <module>
+    url = my.parse_comments(data)
+  File "C:/Users/ybsde/PycharmProjects/Interesting-WebCrawler/Wandering_Earth/comment_crawler_1.py", line 63, in parse_comments
+    comments = data['data']['comments']
+KeyError: 'comments'
+2019-03-31 18:38:07,949 - C:/Users/ybsde/PycharmProjects/Interesting-WebCrawler/Wandering_Earth/comment_crawler_1.py[line:106] - ERROR: 异常
+Traceback (most recent call last):
+  File "C:/Users/ybsde/PycharmProjects/Interesting-WebCrawler/Wandering_Earth/comment_crawler_1.py", line 101, in <module>
+    url = my.parse_comments(data)
+  File "C:/Users/ybsde/PycharmProjects/Interesting-WebCrawler/Wandering_Earth/comment_crawler_1.py", line 63, in parse_comments
+    comments = data['data']['comments']
+KeyError: 'comments'
+2019-03-31 18:38:10,304 - C:/Users/ybsde/PycharmProjects/Interesting-WebCrawler/Wandering_Earth/comment_crawler_1.py[line:106] - ERROR: 异常
+Traceback (most recent call last):
+  File "C:/Users/ybsde/PycharmProjects/Interesting-WebCrawler/Wandering_Earth/comment_crawler_1.py", line 101, in <module>
+    url = my.parse_comments(data)
+  File "C:/Users/ybsde/PycharmProjects/Interesting-WebCrawler/Wandering_Earth/comment_crawler_1.py", line 63, in parse_comments
+    comments = data['data']['comments']
+KeyError: 'comments'
+2019-03-31 18:38:12,350 - C:/Users/ybsde/PycharmProjects/Interesting-WebCrawler/Wandering_Earth/comment_crawler_1.py[line:106] - ERROR: 异常
+Traceback (most recent call last):
+  File "C:/Users/ybsde/PycharmProjects/Interesting-WebCrawler/Wandering_Earth/comment_crawler_1.py", line 101, in <module>
+    url = my.parse_comments(data)
+  File "C:/Users/ybsde/PycharmProjects/Interesting-WebCrawler/Wandering_Earth/comment_crawler_1.py", line 63, in parse_comments
+    comments = data['data']['comments']
+KeyError: 'comments'
+2019-03-31 18:38:14,504 - C:/Users/ybsde/PycharmProjects/Interesting-WebCrawler/Wandering_Earth/comment_crawler_1.py[line:106] - ERROR: 异常
+Traceback (most recent call last):
+  File "C:/Users/ybsde/PycharmProjects/Interesting-WebCrawler/Wandering_Earth/comment_crawler_1.py", line 101, in <module>
+    url = my.parse_comments(data)
+  File "C:/Users/ybsde/PycharmProjects/Interesting-WebCrawler/Wandering_Earth/comment_crawler_1.py", line 63, in parse_comments
+    comments = data['data']['comments']
+KeyError: 'comments'
+2019-03-31 18:38:15,618 - C:/Users/ybsde/PycharmProjects/Interesting-WebCrawler/Wandering_Earth/comment_crawler_1.py[line:106] - ERROR: 异常
+Traceback (most recent call last):
+  File "C:/Users/ybsde/PycharmProjects/Interesting-WebCrawler/Wandering_Earth/comment_crawler_1.py", line 101, in <module>
+    url = my.parse_comments(data)
+  File "C:/Users/ybsde/PycharmProjects/Interesting-WebCrawler/Wandering_Earth/comment_crawler_1.py", line 63, in parse_comments
+    comments = data['data']['comments']
+KeyError: 'comments'
+2019-03-31 18:38:22,388 - C:/Users/ybsde/PycharmProjects/Interesting-WebCrawler/Wandering_Earth/comment_crawler_1.py[line:93] - INFO: start get comment
+2019-03-31 18:38:22,469 - C:/Users/ybsde/PycharmProjects/Interesting-WebCrawler/Wandering_Earth/comment_crawler_1.py[line:106] - ERROR: 异常
+Traceback (most recent call last):
+  File "C:/Users/ybsde/PycharmProjects/Interesting-WebCrawler/Wandering_Earth/comment_crawler_1.py", line 101, in <module>
+    url = my.parse_comments(data)
+  File "C:/Users/ybsde/PycharmProjects/Interesting-WebCrawler/Wandering_Earth/comment_crawler_1.py", line 63, in parse_comments
+    comments = data['data']['comments']
+KeyError: 'comments'
+2019-03-31 18:38:22,627 - C:/Users/ybsde/PycharmProjects/Interesting-WebCrawler/Wandering_Earth/comment_crawler_1.py[line:106] - ERROR: 异常
+Traceback (most recent call last):
+  File "C:/Users/ybsde/PycharmProjects/Interesting-WebCrawler/Wandering_Earth/comment_crawler_1.py", line 101, in <module>
+    url = my.parse_comments(data)
+  File "C:/Users/ybsde/PycharmProjects/Interesting-WebCrawler/Wandering_Earth/comment_crawler_1.py", line 63, in parse_comments
+    comments = data['data']['comments']
+KeyError: 'comments'
+2019-03-31 18:38:24,770 - C:/Users/ybsde/PycharmProjects/Interesting-WebCrawler/Wandering_Earth/comment_crawler_1.py[line:106] - ERROR: 异常
+Traceback (most recent call last):
+  File "C:/Users/ybsde/PycharmProjects/Interesting-WebCrawler/Wandering_Earth/comment_crawler_1.py", line 101, in <module>
+    url = my.parse_comments(data)
+  File "C:/Users/ybsde/PycharmProjects/Interesting-WebCrawler/Wandering_Earth/comment_crawler_1.py", line 63, in parse_comments
+    comments = data['data']['comments']
+KeyError: 'comments'
+2019-03-31 18:38:27,445 - C:/Users/ybsde/PycharmProjects/Interesting-WebCrawler/Wandering_Earth/comment_crawler_1.py[line:106] - ERROR: 异常
+Traceback (most recent call last):
+  File "C:/Users/ybsde/PycharmProjects/Interesting-WebCrawler/Wandering_Earth/comment_crawler_1.py", line 101, in <module>
+    url = my.parse_comments(data)
+  File "C:/Users/ybsde/PycharmProjects/Interesting-WebCrawler/Wandering_Earth/comment_crawler_1.py", line 63, in parse_comments
+    comments = data['data']['comments']
+KeyError: 'comments'
+2019-03-31 18:38:29,955 - C:/Users/ybsde/PycharmProjects/Interesting-WebCrawler/Wandering_Earth/comment_crawler_1.py[line:106] - ERROR: 异常
+Traceback (most recent call last):
+  File "C:/Users/ybsde/PycharmProjects/Interesting-WebCrawler/Wandering_Earth/comment_crawler_1.py", line 101, in <module>
+    url = my.parse_comments(data)
+  File "C:/Users/ybsde/PycharmProjects/Interesting-WebCrawler/Wandering_Earth/comment_crawler_1.py", line 63, in parse_comments
+    comments = data['data']['comments']
+KeyError: 'comments'
+2019-03-31 18:38:30,915 - C:/Users/ybsde/PycharmProjects/Interesting-WebCrawler/Wandering_Earth/comment_crawler_1.py[line:106] - ERROR: 异常
+Traceback (most recent call last):
+  File "C:/Users/ybsde/PycharmProjects/Interesting-WebCrawler/Wandering_Earth/comment_crawler_1.py", line 101, in <module>
+    url = my.parse_comments(data)
+  File "C:/Users/ybsde/PycharmProjects/Interesting-WebCrawler/Wandering_Earth/comment_crawler_1.py", line 63, in parse_comments
+    comments = data['data']['comments']
+KeyError: 'comments'
+2019-03-31 18:38:31,494 - C:/Users/ybsde/PycharmProjects/Interesting-WebCrawler/Wandering_Earth/comment_crawler_1.py[line:106] - ERROR: 异常
+Traceback (most recent call last):
+  File "C:/Users/ybsde/PycharmProjects/Interesting-WebCrawler/Wandering_Earth/comment_crawler_1.py", line 101, in <module>
+    url = my.parse_comments(data)
+  File "C:/Users/ybsde/PycharmProjects/Interesting-WebCrawler/Wandering_Earth/comment_crawler_1.py", line 63, in parse_comments
+    comments = data['data']['comments']
+KeyError: 'comments'
+2019-03-31 18:38:33,349 - C:/Users/ybsde/PycharmProjects/Interesting-WebCrawler/Wandering_Earth/comment_crawler_1.py[line:106] - ERROR: 异常
+Traceback (most recent call last):
+  File "C:/Users/ybsde/PycharmProjects/Interesting-WebCrawler/Wandering_Earth/comment_crawler_1.py", line 101, in <module>
+    url = my.parse_comments(data)
+  File "C:/Users/ybsde/PycharmProjects/Interesting-WebCrawler/Wandering_Earth/comment_crawler_1.py", line 63, in parse_comments
+    comments = data['data']['comments']
+KeyError: 'comments'
+2019-03-31 18:38:36,050 - C:/Users/ybsde/PycharmProjects/Interesting-WebCrawler/Wandering_Earth/comment_crawler_1.py[line:106] - ERROR: 异常
+Traceback (most recent call last):
+  File "C:/Users/ybsde/PycharmProjects/Interesting-WebCrawler/Wandering_Earth/comment_crawler_1.py", line 101, in <module>
+    url = my.parse_comments(data)
+  File "C:/Users/ybsde/PycharmProjects/Interesting-WebCrawler/Wandering_Earth/comment_crawler_1.py", line 63, in parse_comments
+    comments = data['data']['comments']
+KeyError: 'comments'
