@@ -42,7 +42,7 @@ class Spider(object):
             dic['景点名称'] = i.find('span', class_="cn_tit").text
             dic['攻略提到数量'] = i.find('div', class_="strategy_sum").text
             dic['点评数量'] = i.find('div', class_="comment_sum").text
-            dic['景点排名  '] = i.find('span', class_="ranking_sum").text
+            dic['景点排名'] = i.find('span', class_="sum").text
             dic['星级'] = i.find('span', class_="total_star").find('span')['style'].split(':')[1]
             data.append(dic)
         return data
@@ -69,32 +69,29 @@ class Spider(object):
         df['星级'] = df['星级'].str.replace('%', '').astype(np.float)
         # 星级字段处理
 
-        df['景点排名'] = df['景点排名'].str.split('第').str[1]
-        df['景点排名'].fillna(value=0, inplace=True)
+        df['景点排名'] = df['景点排名'].str.replace('%', '').astype(np.int)
 
         '''
         3、景点筛选机制及评价方法
         '''
         print(df)
+
+        self.zdnor(df, '攻略提到数量')
+        self.zdnor(df, '星级')
+        self.zdnor(df, '点评数量')
+
+        df.to_excel('C:/Users/ybsde/Desktop/result.xlsx')
         return df
 
+    def zdnor(self, dfi, col):
+        dfi[col +  '-nor'] = (dfi[col] - dfi[col].min())/(dfi[col].max() - dfi[col].min())
 
-    def data_plot(self, col):
-        import matplotlib.style as psl
 
-        psl.use('seaborn-colorblind')
-        df = self.info_parse()
-        import matplotlib.style as psl
 
-        psl.use('seaborn-colorblind')
-        dffig = df[['景点名称', col]].sort_values(by=col, ascending=True).iloc[:10]
-        dffig.index = dffig['景点名称']
-        dffig.iloc[::-1].plot(kind='bar', rot=90,
-                              title='%sTOP排名' % col, figsize=(12, 6))
-        plt.grid()
 
-s = Spider('shanghai', 3)
-s.data_plot('点评数量')
+s = Spider('shanghai', 20)
+s.info_parse()
+# s.data_plot('点评数量')
 # for url in s.get_urls():
     # s.get_infos(url)
 

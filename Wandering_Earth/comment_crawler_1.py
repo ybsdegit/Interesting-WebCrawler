@@ -1,107 +1,77 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# @Time    : 2019/3/31 15:25
-# @Author  : Paulson
-# @File    : comment_crawler.py
-# @Software: PyCharm
-# @define  : function
-import random
-import re
-from datetime import datetime
+"""
+Created on Tue Feb 12 14:43:42 2019
+@author: Administrator
+"""
+
+import os
 import time
-import pymongo
+from datetime import datetime
 import requests
-from requests.exceptions import *
-from Wandering_Earth import cookies
-from fake_useragent import UserAgent
-import logging
+from pymongo import MongoClient
 
-logging.basicConfig(level=logging.INFO,#控制台打印的日志级别
-                    filename='maoyan.log',
-                    filemode='a',##模式，有w和a，w就是写模式，每次都会重新写日志，覆盖之前的日志
-                    format='%(asctime)s - %(pathname)s[line:%(lineno)d] - %(levelname)s: %(message)s' #日志格式
-                    )
 
-class Spider:
-    """
-    猫眼电影：流浪地球，爬取评论信息
-    """
+class MaoYan(object):
+
     def __init__(self):
-        # 每次抓取评论数，猫眼最大支持30
-        self.limit = 30
-        # 流浪地球
-        self.movieId = '248906'
-        self.ts = 0
-        self.count = 0
-        self.offset = 0
-        self.setting_mongo()
-        self.ua = UserAgent(verify_ssl=False)
-        self.time = int(time.time() * 1000)  # 返回当前时间的时间戳（1970纪元后经过的浮点秒数）* 1000
+        """
+        初始化函数
+        """
+        self.headers = {'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.'
+                                      '38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+                        'Connection': 'keep-alive',
+                        'Cookie': '_lxsdk_cuid=168d5d128e7c8-033114908a580c-10376654-fa000-168d5d128e7c8;'
+                                  ' _lx_utm=utm_source%3Dbing%26utm_medium%3Dorganic; uuid_n_v=v1;'
+                                  ' iuuid=5D49FF702DB211E9AF1B8D0648275EC02D381B7848144BC1A299A63C05094BF5;'
+                                  ' webp=true; selectci=true; ci=281%2C%E6%83%A0%E5%B7%9E;'
+                                  ' __mta=247299643.1549775481575.1549783540088.1549862773375.3;'
+                                  ' _lxsdk=5D49FF702DB211E9AF1B8D0648275EC02D381B7848144BC1A299A63C05094BF5;'
+                                  ' _lxsdk_s=168db05185a-332-e0d-bc5%7C%7C157'}
+        self.time = int(time.time() * 1000)  # 获取当前时间戳获取毫秒
         self.premiere_time = int(time.mktime(time.strptime('2019-02-05 00:00:00', '%Y-%m-%d %H:%M:%S')) * 1000)
+        # premiere_time,首映时间戳,strptime()方法,返回struct_time对象。
 
+        # # 配置mongodb数据库
+        # host = os.environ.get('MONGODB_HOST', '127.0.0.1')  # 本地数据库
+        # port = os.environ.get('MONGODB_PORT', '27017')  # 数据库端口
+        # mongo_url = 'mongodb://{}:{}'.format(host, port)
+        # mongo_db = os.environ.get('MONGODB_DATABASE', 'maoyan')
+        # client = MongoClient(mongo_url)
+        # self.db = client[mongo_db]
+        # self.db['maoyan'].create_index('id', unique=True)  # 以评论的id为主键进行去重
 
-
-    def get_url(self):
-        url = 'http://m.maoyan.com/review/v2/comments.json?movieId=' + self.movieId + '&userId=-1&offset=' + str(
-            self.offset) + '&limit=' + str(self.limit) + '&ts=' + str(self.ts) + '&type=3'
-        return url
-
-    def open_url(self,url):
-        try:
-            headers = {'User-Agent': self.ua.random}
-            response = requests.get(url, headers=headers)
-            if response.status_code == 200:
-                return response.json()
-            else:
-                return None
-        except Exception as e:
-            print(e)
-            return None
-
-    def parse_comments(self, data):
-        ts_duration = self.ts
-        comments = data['data']['comments']
-        for com in comments:
-            com_time = com['time']
-            if self.ts == 0:
-                ts = com_time
-                ts_duration = com_time
-            if self.ts != com_time and self.ts == ts_duration:
-                ts_duration = com_time
-            if com_time != ts_duration:
-                self.ts = ts_duration
-                self.offset = 0
-                return self.get_url()
-            else:
-                content = re.sub("[\r\n|\r|\n|;]", "。",com['content'].strip())  # comment['content'].strip().replace('\n', '。')
-                # content = re.sub("[\s+\.\!\/_,$%^*()+\"\'\?]+|[+——！，。？、~@#￥%……&*（）【】；：]+|\[.+\]|\［.+\］", "", comment['content'].strip())
-                logging.info('get comment ' + str(self.count))
-                self.count += 1
-
-
-    def setting_mongo(self):
+    def get_comment(self):
         """
-        设置MongoDB数据库
-        :return: None
+        爬取首映2.5大年初一到当前时间的电影评论
         """
-        self.client = pymongo.MongoClient(host='localhost', port=27017)
-        self.db = self.client['MaoYan']
-        self.db['maoyan'].create_index('id', unique=True)  # 评论的id为主键进行去重
+        url = 'http://m.maoyan.com/review/v2/comments.json?movieId=248906&userId=-1&' \
+              'offset=0&limit=15&ts={}&type=3'
+        while self.time > self.premiere_time:
+            req_url = url.format(self.time)
+            r = requests.get(req_url, headers=self.headers)
+            print(r.json())
+            count = 0
+            for com in r.json()['data']['comments']:
+                self.parse_comment(com=com)
+                count += 1
+                if count == 15:
+                    self.time = com['time']
+
+            print('成功爬取截止到{}的数据！'.format(datetime.fromtimestamp(int(self.time / 1000))))
+            # 转换为datetime格式的时间
+
+    def parse_comment(self, com):
+        """
+        解析函数，用来解析爬回来的json评论数据，并把数据保存进mongodb数据库
+        """
+        comment = {'content': com['content'], 'gender': com['gender'], 'id': com['id'],
+                   'nick': com['nick'], 'replyCount': com['replyCount'], 'score': com['score'],
+                   'time': com['time'], 'upCount': com['upCount'],
+                   'userId': com['userId'], 'userLevel': com['userLevel']}  # 构造评论字典
+        # 通过评论id去重，如果已经有了就更新，没有就插入
+        # self.db['maoyan'].update_one({'id': comment['id']}, {'$set': comment}, upsert=True)
 
 
 if __name__ == '__main__':
-    logging.info('start get comment')
-    my = Spider()
-    url = my.get_url()
-    while True:
-        try:
-            data = my.open_url(url)
-            print(data)
-            if data:
-                url = my.parse_comments(data)
-                if not url:
-                    logging.info('end')
-                    break
-        except Exception as e:
-            logging.exception('异常')
-            time.sleep(random.random()*3)
+    maoyan = MaoYan()
+    maoyan.get_comment()

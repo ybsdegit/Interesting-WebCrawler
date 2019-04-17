@@ -94,7 +94,7 @@ df['星级'] = df['星级'].str.replace('%', '').astype(np.float)
 
 df['景点排名'] = df['景点排名'].str.split('第').str[1]
 df['景点排名'].fillna(value=0, inplace=True)
-
+df.to_excel('C:/Users/ybsde/Desktop/result.xlsx')
 '''
 3、景点筛选机制及评价方法
 '''
