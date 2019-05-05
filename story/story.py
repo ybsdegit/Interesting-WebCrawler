@@ -68,8 +68,8 @@ def sendemail(url, headers):
     # smtp.login(from_addr, password)
     # smtp.sendmail(from_addr, [to_addr], msg.as_string())
 
-    msg_from = 'ybsdeyx@163.com'  # 发送方邮箱
-    passwd = 'ybsdemima121'  # 填入发送方邮箱的授权码
+    msg_from = ****@163.com'  # 发送方邮箱
+    passwd = '*****'  # 填入发送方邮箱的授权码
     receivers = ['ybsdeyx@126.com,ybsdeyx@foxmail.com']  # 收件人邮箱
 
     subject = '今日份的睡前小故事'  # 主题
