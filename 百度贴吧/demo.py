@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # @Time    : 2019/4/28 23:24
 # @Author  : Paulson
-# @File    : demo.py
+# @File    : download_video.py
 # @Software: PyCharm
 # @define  : function
 
@@ -11,7 +11,7 @@
 import pymysql
 
 # 2. 连接数据库
-db = pymysql.connect(host='localhost',user='root', password='mima', port=3306, db='spiders')
+db = pymysql.connect(host='localhost', user='root', password='mima', port=3306, db='spiders')
 cursor = db.cursor()
 # cursor.execute('SELECT VERSION()')
 # data = cursor.fetchone()
@@ -101,7 +101,7 @@ cursor = db.cursor()
 
 
 # 7. 查询数据
-sql = 'SELECT * FROM students WHERE age >= 20'
+sql = 'select * from students where age >= 20'
 
 try:
     cursor.execute(sql)

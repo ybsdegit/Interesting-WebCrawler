@@ -103,7 +103,9 @@ tqdm是一个可以显示进度条的包，具体的用法可以参考
 首先调用上面的方法并传入参数。
 
 ```
-url = 
-"http://v11-tt.ixigua.com/7da2b219bc734de0f0d04706a9629b61/5c77ed4b/video/m/220d4f4e99b7bfd49efb110892d892bea9011612eb3100006b7bebf69d81/?rc=am12NDw4dGlqajMzNzYzM0ApQHRAbzU6Ojw8MzQzMzU4NTUzNDVvQGgzdSlAZjN1KWRzcmd5a3VyZ3lybHh3Zjc2QHFubHBfZDJrbV8tLTYxL3NzLW8jbyMxLTEtLzEtLjMvLTUvNi06I28jOmEtcSM6YHZpXGJmK2BeYmYrXnFsOiMzLl4%3D"
-download_from_url(url, "夏目友人帐第一集.mp4")
+url = "https://pic.ibaotu.com/00/51/34/88a888piCbRB.mp4"
+down_from_url(url, "测试视频.mp4")
 ```
+### 下载展示
+
+![dowm](C:\Users\ybsde\Desktop\dowm.gif)
