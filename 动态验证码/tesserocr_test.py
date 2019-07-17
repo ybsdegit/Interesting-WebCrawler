@@ -45,7 +45,10 @@ def image_thresholding_method(image):
     image.show()
     return image
 
-image = image_grayscale_deal(img)
-image = image_thresholding_method(image)
-result = tesserocr.image_to_text(image)
-print(result)
+
+def get_cap_number(image):
+    image = image_grayscale_deal(img)
+    image = image_thresholding_method(image)
+    result = tesserocr.image_to_text(image)
+    print(result)
+    return result
