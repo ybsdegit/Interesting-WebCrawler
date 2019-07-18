@@ -7,11 +7,52 @@
 # @define  : function
 import time
 
-from PIL import Image, ImageDraw
+from PIL import Image
 from selenium import webdriver
-import tesserocr
+# import tesserocr
+
+# img = Image.open('image/cap_image.png')
 
 
+def image_grayscale_deal(image):
+    """
+    图片转灰度处理
+    :param image:图片文件
+    :return: 转灰度处理后的图片文件
+    """
+    image = image.convert('L')
+    # 取消注释后可以看到处理后的图片效果
+    # image.show()
+    return image
+
+
+def image_thresholding_method(image):
+    """
+    图片二值化处理
+    :param image:转灰度处理后的图片文件
+    :return: 二值化处理后的图片文件
+    """
+    # 阈值，控制二值化程度，自行调整（不能超过256）
+    threshold = 180
+    table = []
+    for i in range(256):
+        if i < threshold:
+            table.append(0)
+        else:
+            table.append(1)
+    # 图片二值化，此处第二个参数为数字一
+    image = image.point(table, '1')
+    # 取消注释后可以看到处理后的图片效果
+    image.show()
+    return image
+
+
+def get_cap_number(img):
+    image = image_grayscale_deal(img)
+    image = image_thresholding_method(image)
+    result = tesserocr.image_to_text(image)
+    print(result)
+    return result
 
 
 
@@ -36,7 +77,7 @@ def get_cap_image(driver):
     with open('cap_image.png', 'rb') as f:
         cap_image_content = f.read()
     return cap_image_content
-        
+
     
 def login(phone_number):
     login_url = 'https://www.95303.com/usercenter/login.html'
@@ -46,9 +87,8 @@ def login(phone_number):
     driver.find_element_by_id('login_message_phone').send_keys(phone_number)  # 输入手机号
     
     cap_image_content = get_cap_image(driver)  # 验证码图片 -> byte二进制数据
+    cap_image_number = get_cap_number(cap_image_content)
     
-    
-    cap_image_number = 123456
     driver.find_element_by_id('login_img_code').send_keys(cap_image_number)  # 输入图片验证码
     
     driver.find_element_by_xpath('//div[text()="点击发送短信验证码"]').click()  #
