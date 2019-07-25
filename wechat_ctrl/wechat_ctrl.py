@@ -22,6 +22,7 @@ def get_message_girlfriend():
 
 # 消息注册机制
 # 只要接受到的任何的文本消息，就自动调用下方的函数
+
 @itchat.msg_register(['Text'])
 def message(msg):
     print(msg)
@@ -29,24 +30,23 @@ def message(msg):
     ToUserName = msg['ToUserName']
     FromUserName = msg['FromUserName']
     UserName = msg['User']['UserName']
+    
+    
     try:
         NickName = msg['User']['NickName']
     except:
         NickName = 'self'
     print(NickName + ': ' + data)
     message_girlfriend = get_message_girlfriend()
-    NickNames = ['choudashouzb', '安心睡觉']
-    
-    
-    if NickName == 'choudashouzb':
-        if '爱' in data or '宝哥' in data:
-            print('发一段话')
-            itchat.send(message_girlfriend, UserName)
+    NickNames = ['choudashouzb', '安心睡觉', 'SinoSky']
 
-    if NickName in NickNames:
-        print('发一段话')
-        print(message_girlfriend, UserName)
-        itchat.send(message_girlfriend, UserName)
+    # 如果是自己发的消息，就不回复了
+    FromUserName_Me = '@35ab3129cbf98b03105ebbfbc2a9c5e20fa419e5d4437a979fe726b0dcc217da'
+    if FromUserName != FromUserName_Me:
+        if NickName in NickNames:
+            print('发一段话')
+            print(message_girlfriend, UserName)
+            itchat.send(message_girlfriend, UserName)
             
     if FromUserName == ToUserName:
         itchat.send(message_girlfriend, 'filehelper')
@@ -59,6 +59,7 @@ def message(msg):
         
         
 def main():
+    
     itchat.auto_login(hotReload=True)
     itchat.run()
 
