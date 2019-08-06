@@ -31,7 +31,6 @@ def message(msg):
     FromUserName = msg['FromUserName']
     UserName = msg['User']['UserName']
     
-    
     try:
         NickName = msg['User']['NickName']
     except:
@@ -40,17 +39,21 @@ def message(msg):
     message_girlfriend = get_message_girlfriend()
     NickNames = ['choudashouzb', '安心睡觉', 'SinoSky']
 
+    if FromUserName == ToUserName:
+        # 自己给自己发，更新全局变量
+        global FromUserName_Me
+        FromUserName_Me= FromUserName
+        itchat.send(message_girlfriend, 'filehelper')
+
     # 如果是自己发的消息，就不回复了
-    FromUserName_Me = '@35ab3129cbf98b03105ebbfbc2a9c5e20fa419e5d4437a979fe726b0dcc217da'
+    if NickNames == '':
+         FromUserName_Me = '@35ab3129cbf98b03105ebbfbc2a9c5e20fa419e5d4437a979fe726b0dcc217da'
     if FromUserName != FromUserName_Me:
         if NickName in NickNames:
             print('发一段话')
             print(message_girlfriend, UserName)
             itchat.send(message_girlfriend, UserName)
             
-    if FromUserName == ToUserName:
-        itchat.send(message_girlfriend, 'filehelper')
- 
     # 取出发给文件助手的消息
     if ToUserName == 'filehelper':
         if data == '锁屏':
@@ -59,10 +62,10 @@ def message(msg):
         
         
 def main():
-    
     itchat.auto_login(hotReload=True)
     itchat.run()
 
 
 if __name__ == '__main__':
+    FromUserName_Me = ''
     main()
