@@ -67,11 +67,11 @@ def sendemail(url, headers):
     # smtp.ehlo("smtp.163.com")
     # smtp.login(from_addr, password)
     # smtp.sendmail(from_addr, [to_addr], msg.as_string())
-
-    msg_from = ****@163.com'  # 发送方邮箱
+    
+    msg_from = '****@163.com'  # 发送方邮箱
     passwd = '*****'  # 填入发送方邮箱的授权码
     receivers = ['ybsdeyx@126.com,ybsdeyx@foxmail.com']  # 收件人邮箱
-
+    
     subject = '今日份的睡前小故事'  # 主题
     html = getHTMLText(url, headers)
     print(html)
@@ -80,8 +80,8 @@ def sendemail(url, headers):
     msg['Subject'] = subject
     msg['From'] = msg_from
     msg['To'] = ','.join(receivers)
+    s = smtplib.SMTP_SSL("smtp.163.com", 465)  # 邮件服务器及端口号
     try:
-        s = smtplib.SMTP_SSL("smtp.163.com", 465)  # 邮件服务器及端口号
         s.login(msg_from, passwd)
         s.sendmail(msg_from, msg['To'].split(','), msg.as_string())
         print("发送成功")
