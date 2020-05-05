@@ -25,3 +25,4 @@ while True:
             pyautogui.click(region[0] + i, region[1] + 10)
             # time.sleep(0.05)
 
+
