@@ -1,12 +1,1 @@
-_csrf: R3JmTC1uZy4DIikKHggvRxE0BwEAX1QaIBhUBWEZEWcBRQ81fh0gYA==
-CRMSearchForm[year]: 2011
-CRMSearchForm[format]:
-CRMSearchForm[format]: Acres
-CRMSearchForm[area]:
-CRMSearchForm[area]: County
-CRMSearchForm[region]: Midwest
-CRMSearchForm[state]: IL
-CRMSearchForm[county]: Adams
-CRMSearchForm[crop_type]:
-CRMSearchForm[crop_type]: All
-summary: county
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.129 Safari/537.36
