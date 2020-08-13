@@ -57,16 +57,6 @@ def parsehtml2(html):
 
 
 def sendemail(url, headers):
-    # msg = MIMEText("邮件正文", 'html', 'utf-8')
-    # msg['From'] = u'<%s>' % from_addr
-    # msg['To'] = u'<%s>' % to_addr
-    # msg['Subject'] = subject
-    #
-    # smtp = smtplib.SMTP_SSL('smtp.163.com', 465)
-    # smtp.set_debuglevel(1)
-    # smtp.ehlo("smtp.163.com")
-    # smtp.login(from_addr, password)
-    # smtp.sendmail(from_addr, [to_addr], msg.as_string())
     
     msg_from = '****@163.com'  # 发送方邮箱
     passwd = '*****'  # 填入发送方邮箱的授权码
