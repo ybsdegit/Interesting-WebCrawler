@@ -51,7 +51,7 @@ itsdangerous==1.1.0
 javascripthon==0.10
 jedi==0.13.3
 jieba==0.39
-Jinja2==2.10.1
+Jinja2==2.11.3
 jmespath==0.9.4
 joblib==0.13.2
 JPype1==0.6.3
