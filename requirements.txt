@@ -166,7 +166,7 @@ traitlets==4.3.2
 Twisted==19.2.1
 tzlocal==1.5.1
 u-msgpack-python==2.5.1
-urllib3==1.24.2
+urllib3==1.26.5
 virtualenv==16.7.2
 virtualenvwrapper-win==1.2.5
 w3lib==1.20.0
