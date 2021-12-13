@@ -65,7 +65,7 @@ jupyter-core==4.4.0
 jupyter-echarts-pypkg==0.1.2
 kiwisolver==1.0.1
 lml==0.0.2
-lxml==4.3.3
+lxml==4.6.5
 macholib==1.11
 macropy3==1.1.0b2
 Markdown==3.1
