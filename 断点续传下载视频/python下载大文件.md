@@ -74,18 +74,20 @@ def down_from_url(url, dst):
 
     header = {"Range": f"bytes={first_byte}-{file_size}"}
 
+    size = 0
     pbar = tqdm(total=file_size, initial=first_byte, unit='B', unit_scale=True, desc=dst)
     req = requests.get(url, headers=header, stream=True)
     with open(dst, 'ab') as f:
         for chunk in req.iter_content(chunk_size=1024):
             if chunk:
+                size += len(chunk)
                 f.write(chunk)
                 pbar.update(1024)
     pbar.close()
-    return file_size
+    return file_size == size
 
 url = "https://pic.ibaotu.com/00/51/34/88a888piCbRB.mp4"
-down_from_url(url, "测试视频.mp4")
+print(down_from_url(url, "测试视频.mp4"))
 ```
 下面我们开始解读标有注释的代码:
 tqdm是一个可以显示进度条的包，具体的用法可以参考
