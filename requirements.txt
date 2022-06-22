@@ -79,7 +79,7 @@ nbconvert==5.4.1
 nbformat==4.4.0
 nltk==3.4
 notebook==5.7.8
-numpy==1.16.2
+numpy==1.22.0
 opencv-contrib-python==3.4.2.17
 pandas==0.24.2
 pandocfilters==1.4.2
