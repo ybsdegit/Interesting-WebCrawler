@@ -71,7 +71,7 @@ macropy3==1.1.0b2
 Markdown==3.1
 MarkupSafe==1.1.1
 matplotlib==3.0.3
-mistune==0.8.4
+mistune==2.0.3
 MouseInfo==0.0.4
 multidict==4.5.2
 Naked==0.1.31
