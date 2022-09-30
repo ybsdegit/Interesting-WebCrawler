@@ -53,7 +53,7 @@ jedi==0.13.3
 jieba==0.39
 Jinja2==2.10.1
 jmespath==0.9.4
-joblib==0.13.2
+joblib==1.2.0
 JPype1==0.6.3
 Js2Py==0.63
 jsmin==2.2.2
