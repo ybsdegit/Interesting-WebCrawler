@@ -155,7 +155,7 @@ soupsieve==1.9
 stanfordcorenlp==3.9.1.1
 tblib==1.3.2
 tensorboard==1.9.0
-tensorflow==1.9.0
+tensorflow==2.9.3
 termcolor==1.1.0
 terminado==0.8.2
 tesserocr==2.4.0
