@@ -105,7 +105,7 @@ pyecharts-javascripthon==0.0.6
 pyecharts-jupyter-installer==0.0.3
 PyExecJS==1.5.1
 PyGetWindow==0.0.7
-Pygments==2.3.1
+Pygments==2.7.4
 PyHamcrest==1.9.0
 pyhanlp==0.1.45
 PyInstaller==3.4
