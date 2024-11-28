@@ -1,5 +1,5 @@
 absl-py==0.7.1
-aiohttp==3.5.4
+aiohttp==3.7.4
 airtest==1.0.26
 altgraph==0.16.1
 Appium-Python-Client==0.40
